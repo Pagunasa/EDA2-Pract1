@@ -13,6 +13,17 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "sorting.h"
 
+void bubble(slist *dictionary){
+    
+}
 
+void merge(slist *dictionary){
+    
+}
+
+snode binary_search(slist *dictionary,int key,int hash){
+    
+}
 

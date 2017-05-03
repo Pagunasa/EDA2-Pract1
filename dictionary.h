@@ -13,7 +13,7 @@ int add_node(slist *dictionary, snode data);
 int delete_node(slist *dictionary, int key);
 int seek_node(slist *dictionary, int key);
 int size_dictionary(slist *dictionary);
-int hash(int key);
+int hash(int key, int size);
 
 #endif	/* DICTIONARY_H */
 

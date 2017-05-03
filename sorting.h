@@ -8,6 +8,8 @@
 #ifndef SORTING_H
 #define	SORTING_H
 
+#include "struct.h"
+
 void bubble(slist *dictionary);
 void merge(slist *dictionary);
 snode binary_search(slist *dictionary,int key,int hash);
