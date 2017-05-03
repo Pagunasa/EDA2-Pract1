@@ -15,6 +15,6 @@
 //Colors
 
 //Strings
-
+#define STR_DICTIONARY "Define dictionary length"
 #endif	/* STRINGS_H */
 

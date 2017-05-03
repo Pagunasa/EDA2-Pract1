@@ -8,16 +8,9 @@
 #ifndef SORTING_H
 #define	SORTING_H
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
-
-
-
-#ifdef	__cplusplus
-}
-#endif
+void bubble(slist **dictionary);
+void merge(slist **dictionary);
+snode binary_search(slist **dictionary,int key,int hash);
 
 #endif	/* SORTING_H */
 
