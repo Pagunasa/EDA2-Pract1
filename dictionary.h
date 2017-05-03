@@ -7,8 +7,11 @@
 
 #ifndef DICTIONARY_H
 #define	DICTIONARY_H
+#include "struct.h"
 
-void init_dictionary(slist *dictionary);
+#define ERRORMEMORY(condition, msg) if condition {printf msg; exit(0);}
+
+int init_dictionary(slist *dictionary);
 int add_node(slist *dictionary, snode data);
 int delete_node(slist *dictionary, int key);
 int seek_node(slist *dictionary, int key);

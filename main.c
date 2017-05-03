@@ -13,12 +13,18 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "struct.h"
 
 /*
  * 
  */
 int main(int argc, char** argv) {
     
+    int globalSize;
+    slist *list;
+    
+    globalSize = init_dictionary(&list);
+        
     return (EXIT_SUCCESS);
 }
 

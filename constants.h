@@ -8,6 +8,12 @@
 #ifndef STRINGS_H
 #define	STRINGS_H
 
+//Boleans
+#define TRUE 1
+#define FALSE 0
+#define EMPTY -1
+#define ZERO 0
+
 //Numbers
 #define MAX_LENGTH10 10
 #define MAX_LENGTH20 20
@@ -22,6 +28,10 @@
 #define COLOR_CYAN    "\x1b[36m"
 
 //Strings
-#define STR_DICTIONARY "Define dictionary length"
+#define STR_DICT_LENGTH "Define dictionary length "
+
+//Errors
+#define STR_ERR_MEMORY "SYSTEM ERROR(Not enough memory)"
+
 #endif	/* STRINGS_H */
 

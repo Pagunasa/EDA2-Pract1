@@ -1,23 +1,36 @@
+/* 
+ * File:   sorting.h
+ * Author: u140172
+ *
+ * Created on 3 de mayo de 2017, 11:12
+ */
+
 #ifndef STRUCTS_H
 #define	STRUCTS_H
+
+#include "constants.h"
+
+typedef struct{
+    int day;
+    int month;
+    int year;
+}sdateBirth;
 
 typedef struct{
     char name[MAX_LENGTH10];
     char surname[MAX_LENGTH10];
     char sex;
-    int day;
-    int month;
-    int year;
+    sdateBirth dateBirth;
 }sdata;
 
 typedef struct node{
     int DNI;
     sdata Info;
-    node *next;
+    struct node *next;
 }snode;
 
 typedef struct {
-    snode *first;
+    snode* element;
     int size;
 }slist;
 
