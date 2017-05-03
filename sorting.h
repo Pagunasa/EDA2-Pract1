@@ -8,9 +8,9 @@
 #ifndef SORTING_H
 #define	SORTING_H
 
-void bubble(slist **dictionary);
-void merge(slist **dictionary);
-snode binary_search(slist **dictionary,int key,int hash);
+void bubble(slist *dictionary);
+void merge(slist *dictionary);
+snode binary_search(slist *dictionary,int key,int hash);
 
 #endif	/* SORTING_H */
 
