@@ -12,9 +12,10 @@
 #define ERRORMEMORY(condition, msg) if condition {printf msg; exit(0);}
 
 int init_dictionary(slist *dictionary);
-int add_node(slist *dictionary, snode data);
+int add_node(slist *dictionary, int size);
+snode* new_node();
 int delete_node(slist *dictionary, int key);
-int seek_node(slist *dictionary, int key);
+int seek_node(slist *dictionary, int key, int size);
 int size_dictionary(slist *dictionary);
 int hash(int key, int size);
 
