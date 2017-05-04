@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   dictionary.h
  * Author: u137557
  *
@@ -15,7 +15,7 @@ int init_dictionary(slist *dictionary);
 int add_node(slist *dictionary, int size);
 snode* new_node();
 int delete_node(slist *dictionary, int key);
-int seek_node(slist *dictionary, int key, int size);
+snode *seek_node(slist *dictionary, int key, int size);
 int size_dictionary(slist *dictionary);
 int hash(int key, int size);
 

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   main.c
  * Author: Pagunasa
  *
@@ -57,7 +57,8 @@ snode* new_node() {
     printf("Birth date: ");
     scanf("%d %d %d", node->Info.dateBirth.day, node->Info.dateBirth.month, node->Info.dateBirth.year);
 
-    node->next == NULL;
+    node->next = NULL;
+    node->prev = NULL;
 
     return node;
 }
@@ -74,34 +75,50 @@ int add_node(slist *dictionary, int size) {
     } else {
         aux = dictionary[pos].element;
         while (aux->next != NULL) {
+            if (aux->DNI == node->DNI) {
+                return FALSE;
+            }
             aux = dictionary[pos].element->next;
         }
         aux->next = node;
+        node->prev = aux;
         dictionary[pos].size++;
     }
 
-    return 0;
+    return TRUE;
 }
 
-int delete_node(slist *dictionary, int key) {
+int delete_node(slist *dictionary, int key, int size) {
+    snode *aux, *prev, *next;
+    aux = seek_node(dictionary, key, size);
+
+    if (aux != NULL) {
+        prev = aux->prev;
+        next = aux->next;
+        prev->next = next;
+        next->prev = prev;
+        free(aux);
+        return TRUE;
+    }
+    return FALSE;
 
 }
 
-int seek_node(slist *dictionary, int key, int size) {
+snode *seek_node(slist *dictionary, int key, int size) {
     int pos;
     snode *aux;
 
     pos = hash(key, size);
     aux = dictionary[pos].element;
-    
+
     while (aux != NULL) {
-        if(aux->DNI == key){
+        if (aux->DNI == key) {
             //Printf del contenido
-            return 0;
+            return aux;
         }
         aux = dictionary[pos].element->next;
     }
-    return 1;
+    return NULL;
 }
 
 int size_dictionary(slist *dictionary) {

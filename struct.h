@@ -27,6 +27,7 @@ typedef struct node{
     int DNI;
     sdata Info;
     struct node *next;
+    struct node *prev;
 }snode;
 
 typedef struct {
