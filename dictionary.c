@@ -136,6 +136,17 @@ int size_dictionary(slist *dictionary, int length) {
     return cnt;
 }
 
+void print_dictionary(slist *dictionary, int length) {
+    int i;
+    snode *aux;
+    for (i = 0; i < length; i++) {
+        aux = dictionary[i].element;
+        while (aux != NULL)
+            printf("%d", aux->DNI);
+        aux = dictionary[i].element->next;
+    }
+}
+
 int hash(int key, int length) {
     return key % length;
 }

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   main.c
  * Author: Pagunasa
  *
@@ -14,17 +14,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "struct.h"
+#include "dictionary.h"
 
 /*
- * 
+ *
  */
 int main(int argc, char** argv) {
-    
+
     int globalSize;
     slist *list;
-    
+
     globalSize = init_dictionary(&list);
-        
+
     return (EXIT_SUCCESS);
 }
 
