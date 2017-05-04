@@ -94,13 +94,14 @@ int seek_node(slist *dictionary, int key, int size) {
     pos = hash(key, size);
     aux = dictionary[pos].element;
     
-    while (aux->next != NULL) {
+    while (aux != NULL) {
         if(aux->DNI == key){
             //Printf del contenido
             return 0;
         }
         aux = dictionary[pos].element->next;
     }
+    return 1;
 }
 
 int size_dictionary(slist *dictionary) {
