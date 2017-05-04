@@ -21,10 +21,19 @@
  */
 int main(int argc, char** argv) {
 
-    int globalSize;
+    int globalSize, i;
     slist *list;
 
     globalSize = init_dictionary(&list);
+
+    for (i = 0; i < globalSize; i++) {
+        printf("%d", list[i].size);
+    }
+
+    add_node(&list, globalSize);
+
+    printf("%d", list[1].element->DNI);
+    //print_dictionary(list, globalSize);
 
     return (EXIT_SUCCESS);
 }
