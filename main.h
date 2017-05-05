@@ -6,7 +6,9 @@
  */
 
 #ifndef MAIN_H
-#define	MAIN_H
+#define MAIN_H
 
-#endif	/* MAIN_H */
+void menu(slist *list, int length);
+
+#endif /* MAIN_H */
 

@@ -16,10 +16,11 @@
 #include "dictionary.h"
 #include "constants.h"
 
-int* init_dictionary(slist *dictionary, int length) {
+slist* init_dictionary(int length) {
     int i;
+    slist *dictionary;
 
-    dictionary = (int*) malloc(length * sizeof (slist));
+    dictionary = (slist*) malloc(length * sizeof (slist));
 
     for (i = 0; i < length; i++) {
         dictionary[i].element = NULL;
@@ -36,6 +37,11 @@ void dump_line(FILE * fp) {
         /* null body */;
 }
 
+void dump_line_error(FILE * fp) {
+    printf("Incorrect input please re-enter : ");
+    dump_line(fp);
+}
+
 snode* new_node() {
     snode *node;
     node = (snode *) malloc(sizeof (snode));
@@ -43,16 +49,16 @@ snode* new_node() {
 
     printf("Input user information: \n");
     printf("DNI: ");
-    while (!scanf("%d", &node->DNI)) dump_line(stdin);
+    while (!scanf("%d", &node->DNI)) dump_line_error(stdin);
     dump_line(stdin);
     printf("Name: ");
-    while (!scanf("%s", node->Info.name)) dump_line(stdin);
+    while (!scanf("%s", node->Info.name)) dump_line_error(stdin);
     dump_line(stdin);
     printf("Surname: ");
-    while (!scanf("%s", node->Info.surname)) dump_line(stdin);
+    while (!scanf("%s", node->Info.surname)) dump_line_error(stdin);
     dump_line(stdin);
     printf("Sex: ");
-    while (!scanf("%c", &node->Info.sex)) dump_line(stdin);
+    while (!scanf("%c", &node->Info.sex)) dump_line_error(stdin);
     dump_line(stdin);
     printf("Birth date: ");
     while (!scanf("%d %d %d", &node->Info.dateBirth.day, &node->Info.dateBirth.month, &node->Info.dateBirth.year)) dump_line(stdin);
@@ -75,6 +81,11 @@ int add_node(slist *dictionary, int length) {
         dictionary[pos].size++;
     } else {
         aux = dictionary[pos].element;
+        
+        if (aux->DNI == node->DNI) {
+            return FALSE;
+        }
+        
         while (aux->next != NULL) {
             if (aux->DNI == node->DNI) {
                 return FALSE;
@@ -96,7 +107,7 @@ int delete_node(slist *dictionary, int key, int length) {
     aux = seek_node(dictionary, key, length);
 
     if (aux != NULL) {
-        if ( (aux->prev == NULL)&&(aux->next!=NULL) ) {
+        if ((aux->prev == NULL)&&(aux->next != NULL)) {
             aux->next->prev = NULL;
             dictionary[pos].element = aux->next;
             aux->next = NULL;
@@ -104,14 +115,14 @@ int delete_node(slist *dictionary, int key, int length) {
             dictionary[pos].size--;
             return TRUE;
 
-        } else if ((aux->next == NULL)&&(aux->prev!=NULL)) {
+        } else if ((aux->prev != NULL)&&(aux->next == NULL)) {
             aux->prev->next = NULL;
             aux->prev = NULL;
             free(aux);
             dictionary[pos].size--;
             return TRUE;
 
-        } else if ((aux->next == NULL)&&(aux->prev == NULL)) {
+        } else if ((aux->prev == NULL)&&(aux->next == NULL)) {
             dictionary[pos].element = NULL;
             free(aux);
             dictionary[pos].size--;
@@ -142,6 +153,7 @@ snode *seek_node(slist *dictionary, int key, int length) {
     while (aux != NULL) {
         if (aux->DNI == key) {
             //Printf del contenido
+            printf("Found!!!");
             return aux;
         }
         aux = aux->next;
@@ -162,8 +174,8 @@ void print_dictionary(slist *dictionary, int length) {
     snode *aux;
     a = size_dictionary(dictionary, length);
 
-    if (a==0) {
-        printf("Llista buida\n");
+    if (a == 0) {
+        printf("Print fail: Llista buida\n");
     } else {
 
         for (i = 0; i < length; i++) {
@@ -180,3 +192,11 @@ int hash(int key, int length) {
     return key % length;
 }
 
+void print_node(snode *node) {
+    if (node != NULL) {
+        printf(STR_NODE_DNI, node->DNI);
+        printf(STR_NODE_NAM_SUR, node->Info.name, node->Info.surname);
+        printf(STR_NODE_SEX, node->Info.sex);
+        printf(STR_NODE_BIRTHDATE, node->Info.dateBirth.day, node->Info.dateBirth.month, node->Info.dateBirth.year);
+    }
+}
