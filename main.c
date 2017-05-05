@@ -21,19 +21,24 @@
  */
 int main(int argc, char** argv) {
 
-    int globalSize, i;
+    int length, i;
     slist *list;
 
-    globalSize = init_dictionary(&list);
+    printf(STR_DICT_LENGTH);
+    scanf("%d", & length);
+    list = init_dictionary(list, length);
 
-    for (i = 0; i < globalSize; i++) {
-        printf("%d", list[i].size);
-    }
-
-    add_node(&list, globalSize);
-
-    printf("%d", list[1].element->DNI);
-    //print_dictionary(list, globalSize);
+    
+    add_node(list, length);
+    add_node(list, length);
+    add_node(list, length);
+    
+   i=delete_node(list, 1, length);
+    printf("%d si o no\n", i );
+    
+    
+     
+    print_dictionary(list, length);
 
     return (EXIT_SUCCESS);
 }
