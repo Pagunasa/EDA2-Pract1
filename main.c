@@ -84,6 +84,7 @@ void menu(slist *list, int length) {
             case INT_MEN_OPT_MDF:
                 break;
             case INT_MEN_OPT_PNT:
+                print_dictionary(list, length);
                 break;
             case INT_MEN_OPT_EXT:
                 printf(STR_THANKS);

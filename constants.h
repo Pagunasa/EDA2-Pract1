@@ -17,6 +17,14 @@
 //Numbers
 #define MAX_LENGTH10 10
 #define MAX_LENGTH20 20
+#define TEN 10
+#define YEARNUMBER 2017
+#define NUMB_DAYS 31
+#define NUMB_MONTH 12
+#define LENGTH_1 1
+#define LENGTH_2 2
+#define LENGTH_4 4
+
 
 //Colors
 #define COLOR_RED   "\x1b[31m"
@@ -50,7 +58,7 @@
 #define STR_NODE_DNI "DNI: %i\n"
 #define STR_NODE_NAM_SUR "Full name: %s %s\n"
 #define STR_NODE_SEX "Sex: %c \n"
-#define STR_NODE_BIRTHDATE "BirthDate: %i/%i/%i"
+#define STR_NODE_BIRTHDATE "BirthDate: %i/%i/%i\n"
 
 
 //Menu numbers

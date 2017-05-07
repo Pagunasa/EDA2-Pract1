@@ -22,6 +22,7 @@ void print_dictionary(slist *dictionary,int length);
 void dump_line(FILE * fp);
 void dump_line_error(FILE * fp);
 void print_node(snode *node);
+int numberOfDigits(int number);
 
 #endif	/* DICTIONARY_H */
 
