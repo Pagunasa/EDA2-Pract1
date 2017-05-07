@@ -41,11 +41,10 @@ void dump_line_error(FILE * fp) {
     dump_line(fp);
 }
 
-int numberOfDigits(int number){
+int numberOfDigits(int number) {
     int cont = 1;
-    while(number/TEN > 0)
-    {
-        number = number/TEN;
+    while (number / TEN > 0) {
+        number = number / TEN;
         cont++;
     }
     return cont;
@@ -70,26 +69,25 @@ snode* new_node() {
     while (!scanf("%c", &node->Info.sex) || node->Info.sex != 'M' && node->Info.sex != 'F') dump_line_error(stdin);
     dump_line(stdin);
     printf("Birth date: ");
-    while (!scanf("%d %d %d", &node->Info.dateBirth.day, 
+    while (!scanf("%d %d %d", &node->Info.dateBirth.day,
             &node->Info.dateBirth.month, &node->Info.dateBirth.year)
             || numberOfDigits(node->Info.dateBirth.day) != LENGTH_2 &&
-            numberOfDigits(node->Info.dateBirth.day) != LENGTH_1 || 
+            numberOfDigits(node->Info.dateBirth.day) != LENGTH_1 ||
             numberOfDigits(node->Info.dateBirth.month) != LENGTH_2 ||
             numberOfDigits(node->Info.dateBirth.year) != LENGTH_4 ||
-            node->Info.dateBirth.year > YEARNUMBER ||  node->Info.dateBirth.day > NUMB_DAYS ||
+            node->Info.dateBirth.year > YEARNUMBER || node->Info.dateBirth.day > NUMB_DAYS ||
             node->Info.dateBirth.month > NUMB_MONTH) dump_line_error(stdin);
     dump_line(stdin);
     node->next = NULL;
     node->prev = NULL;
 
-    return node; 
+    return node;
 }
 
-int add_node(slist *dictionary, int length) {
-    snode *node, *aux;
+int add_node(snode *node, slist *dictionary, int length) {
+    snode *aux;
     int pos, end = 0;
-
-    node = new_node();
+    
     pos = hash(node->DNI, length);
 
     if (dictionary[pos].element == NULL) {
@@ -219,5 +217,28 @@ void print_node(snode *node) {
         printf(STR_NODE_NAM_SUR, node->Info.name, node->Info.surname);
         printf(STR_NODE_SEX, node->Info.sex);
         printf(STR_NODE_BIRTHDATE, node->Info.dateBirth.day, node->Info.dateBirth.month, node->Info.dateBirth.year);
+    }
+}
+
+slist* add_conjunct(slist *dictionary, int numElem, int length) {
+    int i, result;
+    slist *aux;
+    snode *nodeAux;
+    
+    aux = (slist*) malloc(numElem * sizeof (slist));
+    
+    for(i == 0; i < numElem; i++){
+        nodeAux = new_node();
+        aux[i].element = nodeAux;
+        aux[i].size++;
+    }
+    
+    for(i == 0; i < numElem; i++){
+        result = add_node(aux[i].element, dictionary, length);
+        if (result == FALSE){
+            printf("Error adding user with DNI: %d, already exist", aux[i].element->DNI);
+        }else{
+            printf("Adding correct of user with DNI: %d", aux[i].element->DNI);
+        }
     }
 }

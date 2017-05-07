@@ -35,14 +35,14 @@ int main(int argc, char** argv) {
 
     menu(list, length);
 
-    add_node(list, length);
-    add_node(list, length);
-    add_node(list, length);
-
-    i = delete_node(list, 1, length);
-    printf("%d si o no\n", i);
-
-    print_dictionary(list, length);
+//    add_node(list, length);
+//    add_node(list, length);
+//    add_node(list, length);
+//
+//    i = delete_node(list, 1, length);
+//    printf("%d si o no\n", i);
+//
+//    print_dictionary(list, length);
 
     return (EXIT_SUCCESS);
 }
@@ -51,42 +51,55 @@ void menu(slist *list, int length) {
     int option = 0, trueOrFalse, key;
     snode *result;
 
+    printf(STR_MEN_WELCOME);
     do {
-        printf(STR_MEN_WELCOME);
         printf(STR_MEN_OPT_ADD);
         printf(STR_MEN_OPT_DEL);
         printf(STR_MEN_OPT_SEK);
         printf(STR_MEN_OPT_MDF);
         printf(STR_MEN_OPT_PNT);
+        printf(STR_MEN_OPT_AD2);
         printf(STR_MEN_OPT_EXT);
+        printf(STR_MEN_CHOOSE);
         while (!scanf("%d", &option)) dump_line_error(stdin);
 
         switch (option) {
             case INT_MEN_OPT_ADD: //add a new person
-                trueOrFalse = add_node(list, length);
-                if(trueOrFalse == FALSE){
+                result = new_node();
+                trueOrFalse = add_node(result, list, length);
+                if (trueOrFalse == FALSE) {
                     printf(COLOR_RED ERROR_ADD COLOR_RESET);
-                }else{
-                    printf(OK_ADD);
+                } else {
+                    printf(COLOR_GREEN OK_ADD COLOR_RESET);
                 }
                 break;
-            case INT_MEN_OPT_DEL:
+            case INT_MEN_OPT_DEL: //delete a person
                 printf(STR_INPT_KEY);
                 while (!scanf("%d", &key)) dump_line_error(stdin);
-                trueOrFalse = delete_node(list, 1, length);
+                trueOrFalse = delete_node(list, key, length);
+                if (trueOrFalse == FALSE) {
+                    printf(COLOR_RED ERROR_DEL COLOR_RESET);
+                } else {
+                    printf(COLOR_GREEN OK_DEL COLOR_RESET);
+                }
                 break;
-            case INT_MEN_OPT_SEK:
+            case INT_MEN_OPT_SEK: //search a person
                 printf(STR_INPT_KEY);
                 while (!scanf("%d", &key)) dump_line_error(stdin);
                 result = seek_node(list, key, length);
                 print_node(result);
                 break;
-            case INT_MEN_OPT_MDF:
+            case INT_MEN_OPT_MDF: //Modify one element
                 break;
-            case INT_MEN_OPT_PNT:
+            case INT_MEN_OPT_PNT: //Print all the elements os the list
                 print_dictionary(list, length);
                 break;
-            case INT_MEN_OPT_EXT:
+            case INT_MEN_OPT_AD2:
+                printf(STR_ADD_CONJ);
+                while (!scanf("%d", &key)) dump_line_error(stdin);
+                add_conjunct(list, key, length);
+                break;
+            case INT_MEN_OPT_EXT: //Exit
                 printf(STR_THANKS);
                 break;
             default:

@@ -12,7 +12,7 @@
 #define ERRORMEMORY(condition, msg) if condition {printf msg; exit(0);}
 
 slist* init_dictionary(int length);
-int add_node(slist *dictionary, int length);
+int add_node(snode *node, slist *dictionary, int length);
 snode* new_node();
 int delete_node(slist *dictionary, int key,int length);
 snode *seek_node(slist *dictionary, int key, int length);
@@ -23,6 +23,6 @@ void dump_line(FILE * fp);
 void dump_line_error(FILE * fp);
 void print_node(snode *node);
 int numberOfDigits(int number);
-
+slist* add_conjunct(slist *dictionary, int numElem, int length);
 #endif	/* DICTIONARY_H */
 

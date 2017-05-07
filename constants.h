@@ -38,19 +38,26 @@
 //Strings
 #define STR_DICT_LENGTH "Define dictionary length "
 #define STR_INPT_KEY "Input the user DNI: "
+#define STR_ADD_CONJ "How many users you want to input? "
 
 //ADD strings
 #define ERROR_ADD "Error adding this DNI exist\n"
 #define OK_ADD "Adding completed\n"
 
+//DELETE strings
+#define ERROR_DEL "Error deleting, this DNI not exist\n"
+#define OK_DEL "Deletion completed\n"
+
 //Menu Strings
-#define STR_MEN_WELCOME "Welcome to this program please choose an option: \n"
+#define STR_MEN_WELCOME "Welcome to this program \n"
 #define STR_MEN_OPT_ADD "1- Add a new user \n"
 #define STR_MEN_OPT_DEL "2- Delete a user \n"
 #define STR_MEN_OPT_SEK "3- Search a user \n"
 #define STR_MEN_OPT_MDF "4- Modify information for one person \n"
 #define STR_MEN_OPT_PNT "5- Print all the inputs \n"
+#define STR_MEN_OPT_AD2 "6- Add a conjunt of users \n"
 #define STR_MEN_OPT_EXT "0- Close the program \n"
+#define STR_MEN_CHOOSE  "Please choose an option: "
 #define STR_NOTVALID_OPT "Not valid option\n"
 #define STR_THANKS "Thank you for use the program "
 
@@ -67,6 +74,7 @@
 #define INT_MEN_OPT_SEK 3
 #define INT_MEN_OPT_MDF 4
 #define INT_MEN_OPT_PNT 5
+#define INT_MEN_OPT_AD2 6
 #define INT_MEN_OPT_EXT 0
 
 //Errors
