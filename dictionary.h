@@ -24,5 +24,7 @@ void dump_line_error(FILE * fp);
 void print_node(snode *node);
 int numberOfDigits(int number);
 slist* add_conjunct(slist *dictionary, int numElem, int length);
+void modify_node(snode *node);
+
 #endif	/* DICTIONARY_H */
 

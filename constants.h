@@ -24,7 +24,11 @@
 #define LENGTH_1 1
 #define LENGTH_2 2
 #define LENGTH_4 4
+#define INT_2_0 00
+#define INT_4_0 0000
 
+//Chars
+#define CHAR_N 'N'
 
 //Colors
 #define COLOR_RED   "\x1b[31m"
@@ -39,6 +43,7 @@
 #define STR_DICT_LENGTH "Define dictionary length "
 #define STR_INPT_KEY "Input the user DNI: "
 #define STR_ADD_CONJ "How many users you want to input? "
+#define STR_NULL "NULL"
 
 //ADD strings
 #define ERROR_ADD "Error adding this DNI exist\n"
@@ -67,6 +72,17 @@
 #define STR_NODE_SEX "Sex: %c \n"
 #define STR_NODE_BIRTHDATE "BirthDate: %i/%i/%i\n"
 
+//Node Strings
+#define STR_OPENING "Input user information: \n"
+#define STR_DNI "DNI: "
+#define STR_NAME "Name: "
+#define STR_SURNAME "Surname: "
+#define STR_SEX "Sex: "
+#define STR_BIRTH_DATE "Birth date: "
+#define STR_MOD_INF1 "Write NULL if you don't want to modify this information"
+#define STR_MOD_INF2 "Write N if you don't want to modify this information"
+#define STR_MOD_INF2 "Write 00 in day or month or 0000 in year if you don't want to modify this field"
+#define STR_MOD_END "Modification completed"
 
 //Menu numbers
 #define INT_MEN_OPT_ADD 1
@@ -80,6 +96,6 @@
 //Errors
 #define STR_ERR_MEMORY "SYSTEM ERROR(Not enough memory)"
 #define STR_ERR_INPUT "ERROR: not valid input, please re-enter input:"
-
+#define STR_ERR_NEXTS "Error printing the person, not exists"
 #endif	/* STRINGS_H */
 

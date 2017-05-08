@@ -22,7 +22,7 @@
  */
 int main(int argc, char** argv) {
 
-    int length, i;
+    int length;
     slist *list;
 
     printf(STR_DICT_LENGTH);
@@ -31,18 +31,18 @@ int main(int argc, char** argv) {
 
     list = init_dictionary(length);
 
-    print_dictionary(list, length);
+   // print_dictionary(list, length);
 
     menu(list, length);
 
-//    add_node(list, length);
-//    add_node(list, length);
-//    add_node(list, length);
-//
-//    i = delete_node(list, 1, length);
-//    printf("%d si o no\n", i);
-//
-//    print_dictionary(list, length);
+    //    add_node(list, length);
+    //    add_node(list, length);
+    //    add_node(list, length);
+    //
+    //    i = delete_node(list, 1, length);
+    //    printf("%d si o no\n", i);
+    //
+    //    print_dictionary(list, length);
 
     return (EXIT_SUCCESS);
 }
@@ -90,12 +90,16 @@ void menu(slist *list, int length) {
                 print_node(result);
                 break;
             case INT_MEN_OPT_MDF: //Modify one element
+                printf(STR_INPT_KEY);
+                while (!scanf("%d", &key)) dump_line_error(stdin);
+                result = seek_node(list, key, length);
+                modify_node(result);
                 break;
             case INT_MEN_OPT_PNT: //Print all the elements os the list
                 print_dictionary(list, length);
                 break;
             case INT_MEN_OPT_AD2:
-                printf(STR_ADD_CONJ);
+                printf(STR_ADD_CONJ); //Aqui la key quiere decir numero usuarios
                 while (!scanf("%d", &key)) dump_line_error(stdin);
                 add_conjunct(list, key, length);
                 break;
