@@ -44,14 +44,15 @@
 #define STR_INPT_KEY "Input the user DNI: "
 #define STR_ADD_CONJ "How many users you want to input? "
 #define STR_NULL "NULL"
+#define STR_ADD_CRRT "Adding correct of user with DNI: %d"
 
 //ADD strings
 #define ERROR_ADD "Error adding this DNI exist\n"
-#define OK_ADD "Adding completed\n"
+#define OK_ADD "Adding completed \n\n"
 
 //DELETE strings
 #define ERROR_DEL "Error deleting, this DNI not exist\n"
-#define OK_DEL "Deletion completed\n"
+#define OK_DEL "Deletion completed \n\n"
 
 //Menu Strings
 #define STR_MEN_WELCOME "Welcome to this program \n"
@@ -65,8 +66,11 @@
 #define STR_MEN_CHOOSE  "Please choose an option: "
 #define STR_NOTVALID_OPT "Not valid option\n"
 #define STR_THANKS "Thank you for use the program "
+#define STR_FOUND "Found!!! \n\n"
+#define STR_JUMP "\n\n"
 
 //Print Node Strings
+#define STR_NODE_NUSER "User %d: \n"
 #define STR_NODE_DNI "DNI: %i\n"
 #define STR_NODE_NAM_SUR "Full name: %s %s\n"
 #define STR_NODE_SEX "Sex: %c \n"
@@ -79,10 +83,10 @@
 #define STR_SURNAME "Surname: "
 #define STR_SEX "Sex: "
 #define STR_BIRTH_DATE "Birth date: "
-#define STR_MOD_INF1 "Write NULL if you don't want to modify this information"
-#define STR_MOD_INF2 "Write N if you don't want to modify this information"
-#define STR_MOD_INF2 "Write 00 in day or month or 0000 in year if you don't want to modify this field"
-#define STR_MOD_END "Modification completed"
+#define STR_MOD_INF1 "Write NULL if you don't want to modify this information \n"
+#define STR_MOD_INF2 "Write N if you don't want to modify this information \n"
+#define STR_MOD_INF3 "Write 00 in day or month or 0000 in year if you don't want to modify this field \n"
+#define STR_MOD_END "Modification completed \n\n"
 
 //Menu numbers
 #define INT_MEN_OPT_ADD 1
@@ -94,8 +98,11 @@
 #define INT_MEN_OPT_EXT 0
 
 //Errors
-#define STR_ERR_MEMORY "SYSTEM ERROR(Not enough memory)"
-#define STR_ERR_INPUT "ERROR: not valid input, please re-enter input:"
-#define STR_ERR_NEXTS "Error printing the person, not exists"
+#define STR_ERR_MEMORY "SYSTEM ERROR(Not enough memory) \n"
+#define STR_ERR_INPUT "ERROR: not valid input, please re-enter input: "
+#define STR_ERR_NEXTS "Error printing the person, not exists \n"
+#define STR_ERR_EMPTY "Print fail: Llista buida \n"
+#define STR_ERR_ADD "Error adding user with DNI: %d, already exist \n"
+
 #endif	/* STRINGS_H */
 

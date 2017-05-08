@@ -13,6 +13,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "dictionary.h"
 #include "constants.h"
 
@@ -165,7 +166,7 @@ snode *seek_node(slist *dictionary, int key, int length) {
 
     while (aux != NULL) {
         if (aux->DNI == key) {
-            printf("Found!!!");
+            printf(STR_FOUND);
             return aux;
         }
         aux = aux->next;
@@ -187,16 +188,17 @@ void print_dictionary(slist *dictionary, int length) {
     a = size_dictionary(dictionary, length);
 
     if (a == 0) {
-        printf("Print fail: Llista buida\n");
+        printf(COLOR_RED STR_ERR_EMPTY COLOR_RESET);
     } else {
 
         for (i = 0; i < length; i++) {
             aux = dictionary[i].element;
             while (aux != NULL) {
                 cont++;
-                printf("User %d: \n", cont);
+                printf(STR_NODE_NUSER, cont);
                 print_node(aux);
                 aux = aux->next;
+                printf(STR_JUMP);
             }
         }
     }
@@ -213,7 +215,7 @@ void print_node(snode *node) {
         printf(STR_NODE_SEX, node->Info.sex);
         printf(STR_NODE_BIRTHDATE, node->Info.dateBirth.day, node->Info.dateBirth.month, node->Info.dateBirth.year);
     } else {
-        printf(STR_ERR_NEXTS);
+        printf(COLOR_RED STR_ERR_NEXTS COLOR_RESET);
     }
 }
 
@@ -234,9 +236,9 @@ slist* add_conjunct(slist *dictionary, int numElem, int length) {
     for (i == 0; i < numElem; i++) {
         result = add_node(aux[i].element, dictionary, length);
         if (result == FALSE) {
-            printf("Error adding user with DNI: %d, already exist", aux[i].element->DNI);
+            printf(STR_ERR_ADD, aux[i].element->DNI);
         } else {
-            printf("Adding correct of user with DNI: %d", aux[i].element->DNI);
+            printf(STR_ADD_CRRT, aux[i].element->DNI);
         }
     }
 
@@ -266,23 +268,26 @@ void modify_node(snode *node) {
         while (!scanf("%c", &sex) || sex != 'M' && sex != 'F' && sex != 'N') dump_line_error(stdin);
         dump_line(stdin);
 
-        printf(STR_MOD_INF2);
+        printf(STR_MOD_INF3);
         printf(STR_BIRTH_DATE);
         while (!scanf("%d %d %d", &dateBirth.day,
                 &dateBirth.month, &dateBirth.year)
                 || numberOfDigits(dateBirth.day) != LENGTH_2 &&
-                numberOfDigits(dateBirth.day) != LENGTH_1 ||
-                numberOfDigits(dateBirth.month) != LENGTH_2 ||
-                numberOfDigits(dateBirth.year) != LENGTH_4 ||
+                numberOfDigits(dateBirth.day) != LENGTH_1 
+                && dateBirth.day != ZERO  ||
+                numberOfDigits(dateBirth.month) != LENGTH_2 &&  
+                dateBirth.month != ZERO || 
+                numberOfDigits(dateBirth.year) != LENGTH_4 
+                && dateBirth.year != ZERO ||
                 dateBirth.year > YEARNUMBER || dateBirth.day > NUMB_DAYS ||
                 dateBirth.month > NUMB_MONTH) dump_line_error(stdin);
         dump_line(stdin);
 
-        if (name != STR_NULL) {
-            node->Info.name = name;
+        if (strcmp(name,STR_NULL) != ZERO) {
+            strlcpy(node->Info.name, name, MAX_LENGTH10);
         }
-        if (surname != STR_NULL) {
-            node->Info.surname = surname;
+        if (strcmp(surname,STR_NULL) != ZERO) {
+            strlcpy(node->Info.surname, surname, MAX_LENGTH10);
         }
         if (sex != CHAR_N) {
             node->Info.sex = sex;
