@@ -10,7 +10,7 @@
 
 #include "struct.h"
 
-void bubble(slist *dictionary);
+void sort(slist *list,snode *new);
 void merge(slist *dictionary);
 snode binary_search(slist *dictionary,int key,int hash);
 

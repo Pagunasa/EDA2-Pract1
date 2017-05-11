@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   main.c
  * Author: Pagunasa
  *
@@ -15,15 +15,37 @@
 #include <stdlib.h>
 #include "sorting.h"
 
-void bubble(slist *dictionary){
-    
+void sort(slist *list, snode *new) {
+    snode *aux;
+    aux = list->element;
+    if (new->DNI < aux->DNI) {
+        new->next = aux;
+        aux->prev = new;
+        list->element = new;
+        return;
+    }
+    while (aux->next != NULL) {
+        if (aux->DNI < new->DNI && aux->next->DNI > new->DNI) {
+            new->next = aux->next;
+            aux->next->prev = new;
+            aux->next = new;
+            new->prev = aux;
+            return;
+        }
+        aux = aux->next;
+    }
+    if (new->DNI > aux->DNI) {
+        aux->next = new;
+        new->prev = aux;
+        return;
+    }
 }
 
-void merge(slist *dictionary){
-    
+void merge(slist *dictionary) {
+
 }
 
-snode binary_search(slist *dictionary,int key,int hash){
-    
+snode binary_search(slist *dictionary, int key, int hash) {
+
 }
 

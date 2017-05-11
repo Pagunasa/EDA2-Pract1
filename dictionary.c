@@ -16,6 +16,7 @@
 #include <string.h>
 #include "dictionary.h"
 #include "constants.h"
+#include "sorting.h"
 
 slist* init_dictionary(int length) {
     int i;
@@ -104,8 +105,9 @@ int add_node(snode *node, slist *dictionary, int length) {
             }
             if (aux->next == NULL) {
                 end = 1;
-                aux->next = node;
-                node->prev = aux;
+                sort(&dictionary[pos], node);
+                //aux->next = node;
+                //node->prev = aux;
                 dictionary[pos].size++;
             }
             aux = aux->next;
@@ -273,20 +275,20 @@ void modify_node(snode *node) {
         while (!scanf("%d %d %d", &dateBirth.day,
                 &dateBirth.month, &dateBirth.year)
                 || numberOfDigits(dateBirth.day) != LENGTH_2 &&
-                numberOfDigits(dateBirth.day) != LENGTH_1 
-                && dateBirth.day != ZERO  ||
-                numberOfDigits(dateBirth.month) != LENGTH_2 &&  
-                dateBirth.month != ZERO || 
-                numberOfDigits(dateBirth.year) != LENGTH_4 
+                numberOfDigits(dateBirth.day) != LENGTH_1
+                && dateBirth.day != ZERO ||
+                numberOfDigits(dateBirth.month) != LENGTH_2 &&
+                dateBirth.month != ZERO ||
+                numberOfDigits(dateBirth.year) != LENGTH_4
                 && dateBirth.year != ZERO ||
                 dateBirth.year > YEARNUMBER || dateBirth.day > NUMB_DAYS ||
                 dateBirth.month > NUMB_MONTH) dump_line_error(stdin);
         dump_line(stdin);
 
-        if (strcmp(name,STR_NULL) != ZERO) {
+        if (strcmp(name, STR_NULL) != ZERO) {
             strlcpy(node->Info.name, name, MAX_LENGTH10);
         }
-        if (strcmp(surname,STR_NULL) != ZERO) {
+        if (strcmp(surname, STR_NULL) != ZERO) {
             strlcpy(node->Info.surname, surname, MAX_LENGTH10);
         }
         if (sex != CHAR_N) {
