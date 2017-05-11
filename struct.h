@@ -32,7 +32,7 @@ typedef struct node{// node de la llista enllaçada
 
 typedef struct {// estructura de la llista enllaçada
     snode* element;// punter al primer node de la llista
-    int size;//nombre de nodes que té la llista
+    int size; //nombre de nodes que té la llista
 }slist;
 
 #endif	/* STRUCTS_H */
