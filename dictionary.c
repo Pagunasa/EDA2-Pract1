@@ -76,7 +76,8 @@ snode* new_node() {
             &node->Info.dateBirth.month, &node->Info.dateBirth.year)
             || numberOfDigits(node->Info.dateBirth.day) != LENGTH_2 &&
             numberOfDigits(node->Info.dateBirth.day) != LENGTH_1 ||
-            numberOfDigits(node->Info.dateBirth.month) != LENGTH_2 ||
+            numberOfDigits(node->Info.dateBirth.month) != LENGTH_2 &&
+            numberOfDigits(node->Info.dateBirth.month) != LENGTH_1 ||
             numberOfDigits(node->Info.dateBirth.year) != LENGTH_4 ||
             node->Info.dateBirth.year > YEARNUMBER || node->Info.dateBirth.day > NUMB_DAYS ||
             node->Info.dateBirth.month > NUMB_MONTH) dump_line_error(stdin);
@@ -278,6 +279,7 @@ void modify_node(snode *node) {
                 numberOfDigits(dateBirth.day) != LENGTH_1
                 && dateBirth.day != ZERO ||
                 numberOfDigits(dateBirth.month) != LENGTH_2 &&
+                numberOfDigits(dateBirth.month) != LENGTH_1 &&
                 dateBirth.month != ZERO ||
                 numberOfDigits(dateBirth.year) != LENGTH_4
                 && dateBirth.year != ZERO ||
