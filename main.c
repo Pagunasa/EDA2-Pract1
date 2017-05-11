@@ -105,6 +105,7 @@ void menu(slist *list, int length) {
                 break;
             case INT_MEN_OPT_EXT: //Exit
                 printf(STR_THANKS);
+                clear_all(list, length);
                 break;
             default:
                 printf(STR_NOTVALID_OPT);

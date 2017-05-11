@@ -312,3 +312,17 @@ void modify_node(snode *node) {
     }
 
 }
+
+void clear_all(slist *dictionary, int length){
+    int i;
+    snode *aux, *temp;
+    
+    for (i = 0; i < length; i++) {
+            aux = dictionary[i].element;
+            while (aux != NULL) {
+                temp = aux->next;
+                free(aux);
+                aux = temp;
+            }
+        }
+}
