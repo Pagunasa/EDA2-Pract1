@@ -50,7 +50,7 @@ int main(int argc, char** argv) {
 }
 
 void menu(slist *list, int length) {
-    int option = 0, trueOrFalse, key, i;
+    int option = 0, trueOrFalse, key, i, aux;
     int *DNI;
     snode *result;
 
@@ -99,13 +99,11 @@ void menu(slist *list, int length) {
                 modify_node(result);
                 break;
             case INT_MEN_OPT_PNT: //Print all the elements os the list
-
-                DNI = fill_list(list, length);
-                //print_dictionary(list, length);
-                DNI = merge_sort(DNI);
-                for (i = 0; i<sizeof (DNI); i++) {
-                    printf("%d\n", DNI[i]);
-                }
+                aux=size_dictionary(list, length);
+                DNI=fill_list(list, length);
+                DNI=buble(DNI, aux);
+                print_list_ordered(DNI, aux, list, length);
+               
                 break;
             case INT_MEN_OPT_AD2:
                 printf(STR_ADD_CONJ); //Aqui la key quiere decir numero usuarios

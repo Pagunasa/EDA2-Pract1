@@ -57,53 +57,17 @@ int *fill_list(slist *dictionary, int length) {
     return DNI;
 }
 
-int *merge(int *A, int *B) {
-    int k1 = 1, k2 = 1;
-    int N = sizeof (A);
-    int M = sizeof (B);
-    int *RES = (int*) malloc((N + M) * sizeof (int));
-    int k = 1;
-    while (k1 <= N || k2 <= M) {
-        if (A[k1] <= B[k2]) {
-            RES[k] = A[k1];
-            k1++;
-            k++;
-        } else {
-            RES[k] = B[k2];
-            k2++;
-            k++;
+int* buble(int *a, int length) {// buble sort
+    int temp;
+    for (int i = 0; i < length; i++) {
+        for (int j = 0; j < length - 1; j++) {
+            if (a[j] > a[j + 1]) {
+                temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+            }
+
         }
     }
-    while (k1 <= N) {
-        RES[k] = A[k1];
-        k1++;
-        k++;
-    }
-    while (k2 <= M) {
-        RES[k] = B[k2];
-        k2++;
-        k++;
-    }
-    return RES;
+    return a;
 }
-
-int * merge_sort(int *DNI) {
-    int k;
-    int N = sizeof (DNI);
-
-    if (N == 1) {
-        return DNI;
-    } else {
-        k = N / 2;
-        int *A1 = (int*) malloc(k * sizeof (int));
-        A1 = merge_sort(&DNI[0]);
-        int *A2 = (int*) malloc((N - k) * sizeof (int));
-        A2 = merge_sort(&DNI[k + 1]);
-        return merge(A1, A2);
-    }
-}
-
-snode binary_search(slist *dictionary, int key, int hash) {
-
-}
-

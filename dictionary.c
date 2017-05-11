@@ -317,6 +317,15 @@ void modify_node(snode *node) {
 
 }
 
+void print_list_ordered(int *a, int arraylength, slist *dictionary, int length){
+    
+    snode *aux;
+    for(int i=0; i<arraylength; i++){
+        aux=seek_node(dictionary,a[i], length );
+        print_node(aux);
+    }
+}
+
 void clear_all(slist *dictionary, int length) {
     int i;
     snode *aux, *temp;

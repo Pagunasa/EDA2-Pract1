@@ -11,9 +11,9 @@
 #include "struct.h"
 
 void sort(slist *list,snode *new);
-int *merge(int *A, int *B);
-int *merge_sort(int *DNI);
+int* buble(int *a, int length);
 snode binary_search(slist *dictionary,int key,int hash);
+int *fill_list(slist *dictionary, int length);
 
 #endif	/* SORTING_H */
 

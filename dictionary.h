@@ -25,6 +25,7 @@ void print_node(snode *node);// imprimeix informació d'un node
 int numberOfDigits(int number);//numero maxim de digits a entrar per teclat
 slist* add_conjunct(slist *dictionary, int numElem, int length);//afegeix nodes a partir d'un array
 void modify_node(snode *node);// modifica node ja existent
+void print_list_ordered(int *a, int arraylength, slist *dictionary, int length);
 
 #endif	/* DICTIONARY_H */
 
