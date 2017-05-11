@@ -10,29 +10,29 @@
 
 #include "constants.h"
 
-typedef struct{
-    int day;
-    int month;
-    int year;
+typedef struct{// data de naixament d'una persona
+    int day;// dia neixament
+    int month;// mes de naixament
+    int year;// any de naixament
 }sdateBirth;
 
-typedef struct{
+typedef struct{//dades a emmagatzemar d'una persona
     char name[MAX_LENGTH10];
     char surname[MAX_LENGTH10];
     char sex;
-    sdateBirth dateBirth;
+    sdateBirth dateBirth;// data naixament
 }sdata;
 
-typedef struct node{
-    int DNI;
-    sdata Info;
-    struct node *next;
-    struct node *prev;
+typedef struct node{// node de la llista enllaçada
+    int DNI;//clau 
+    sdata Info;// informació de la persona
+    struct node *next;// punter al següent node
+    struct node *prev;//punter al node previ
 }snode;
 
-typedef struct {
-    snode* element;
-    int size;
+typedef struct {// estructura de la llista enllaçada
+    snode* element;// punter al primer node de la llista
+    int size;//nombre de nodes que té la llista
 }slist;
 
 #endif	/* STRUCTS_H */
