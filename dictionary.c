@@ -18,7 +18,7 @@
 #include "constants.h"
 #include "sorting.h"
 
-slist* init_dictionary(int length) {// inicialitza el diccionari 
+slist* init_dictionary(int length) {// inicialitza el diccionari
     int i;
     slist *dictionary;
     //crea l'array dictionary de llargada length
@@ -56,9 +56,9 @@ int numberOfDigits(int number) {// comprova quants numeros han entrat per pantal
 
 snode* new_node() {// crea un nou node(dades de la persona)
     snode *node;
-    node = (snode *) malloc(sizeof (snode));// crea node
+    node = (snode *) malloc(sizeof (snode)); // crea node
     ERRORMEMORY((node == NULL), (COLOR_RED STR_ERR_MEMORY COLOR_RESET));
-    
+
     //omple el node amb les dades necessaries
     printf(STR_OPENING);
     printf(STR_DNI);
@@ -94,8 +94,8 @@ snode* new_node() {// crea un nou node(dades de la persona)
 int add_node(snode *node, slist *dictionary, int length) {// afegeix node  a la llista
     snode *aux;
     int pos, end = 0;
-    
-    pos = hash(node->DNI, length);// lloc a l'array  diccionari
+
+    pos = hash(node->DNI, length); // lloc a l'array  diccionari
 
     if (dictionary[pos].element == NULL) {//mira si la llista en la posició esta buida
         dictionary[pos].element = node;
@@ -103,7 +103,7 @@ int add_node(snode *node, slist *dictionary, int length) {// afegeix node  a la 
     } else {
         aux = dictionary[pos].element;
         while (end != 1) {
-            if (aux->DNI == node->DNI) {//mira si la persona ja existeix en la llista 
+            if (aux->DNI == node->DNI) {//mira si la persona ja existeix en la llista
                 free(node);
                 return FALSE;
             }
@@ -122,9 +122,9 @@ int add_node(snode *node, slist *dictionary, int length) {// afegeix node  a la 
 
 int delete_node(slist *dictionary, int key, int length) {// borrar node del diccionari
     snode *aux, *prev, *next;
-    int pos;// posicio en l'array diccionari
+    int pos; // posicio en l'array diccionari
     pos = hash(key, length);
-    aux = seek_node(dictionary, key, length);// aux apunta al node amb la clau indicada
+    aux = seek_node(dictionary, key, length); // aux apunta al node amb la clau indicada
 
     if (aux != NULL) {// mira si el node amb la clau existeix en el diccionari
         //mira si el node a eliminar és el primer de la llista i no l'únic i l'elimina
@@ -135,20 +135,20 @@ int delete_node(slist *dictionary, int key, int length) {// borrar node del dicc
             free(aux);
             dictionary[pos].size--;
             return TRUE;
-         //mira si el node a eliminar és l'últim de la llista i elimina el node
+            //mira si el node a eliminar és l'últim de la llista i elimina el node
         } else if ((aux->prev != NULL)&&(aux->next == NULL)) {
             aux->prev->next = NULL;
             aux->prev = NULL;
             free(aux);
             dictionary[pos].size--;
             return TRUE;
-         //mira si el node a eliminar és el primer i únic en la llista i elimina el node
+            //mira si el node a eliminar és el primer i únic en la llista i elimina el node
         } else if ((aux->prev == NULL)&&(aux->next == NULL)) {
             dictionary[pos].element = NULL;
             free(aux);
             dictionary[pos].size--;
             return TRUE;
-         // mira si el node a eliminar esta entre dos nodes i l'elimina
+            // mira si el node a eliminar esta entre dos nodes i l'elimina
         } else {
             prev = aux->prev;
             next = aux->next;
@@ -164,24 +164,24 @@ int delete_node(slist *dictionary, int key, int length) {// borrar node del dicc
     }
 }
 
-snode *seek_node(slist *dictionary, int key, int length) {// buscar node 
+snode *seek_node(slist *dictionary, int key, int length) {// buscar node
     int pos;
     snode *aux;
 
-    pos = hash(key, length);// posició dins l'array diccionari
+    pos = hash(key, length); // posició dins l'array diccionari
     aux = dictionary[pos].element;
 
     while (aux != NULL) {// recorre la llista
         if (aux->DNI == key) {
             printf(STR_FOUND);
-            return aux;//retorna punter al node buscat
+            return aux; //retorna punter al node buscat
         }
         aux = aux->next;
     }
-    return NULL;// si no existeix torna NULL
+    return NULL; // si no existeix torna NULL
 }
 
-int size_dictionary(slist *dictionary, int length) {//calcula quanets persones estan en la llista 
+int size_dictionary(slist *dictionary, int length) {//calcula quanets persones estan en la llista
     int i, cnt = 0;
     for (i = 0; i < length; i++) {
         cnt += dictionary[i].size;
@@ -189,8 +189,8 @@ int size_dictionary(slist *dictionary, int length) {//calcula quanets persones e
     return cnt;
 }
 
-void print_dictionary(slist *dictionary, int length) {// imprimeix tots els nodes i la seva inforació 
-    int i, a, cont = 0
+void print_dictionary(slist *dictionary, int length) {// imprimeix tots els nodes i la seva inforació
+    int i, a, cont = 0;
     snode *aux;
     a = size_dictionary(dictionary, length);
 
@@ -317,16 +317,16 @@ void modify_node(snode *node) {
 
 }
 
-void clear_all(slist *dictionary, int length){
+void clear_all(slist *dictionary, int length) {
     int i;
     snode *aux, *temp;
-    
+
     for (i = 0; i < length; i++) {
-            aux = dictionary[i].element;
-            while (aux != NULL) {
-                temp = aux->next;
-                free(aux);
-                aux = temp;
-            }
+        aux = dictionary[i].element;
+        while (aux != NULL) {
+            temp = aux->next;
+            free(aux);
+            aux = temp;
         }
+    }
 }

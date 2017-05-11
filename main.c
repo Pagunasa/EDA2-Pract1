@@ -16,6 +16,7 @@
 #include "struct.h"
 #include "main.h"
 #include "dictionary.h"
+#include "sorting.h"
 
 /*
  *
@@ -29,9 +30,10 @@ int main(int argc, char** argv) {
     while (!scanf("%d", &length)) dump_line_error(stdin);
 
 
+
     list = init_dictionary(length);
 
-   // print_dictionary(list, length);
+    // print_dictionary(list, length);
 
     menu(list, length);
 
@@ -48,7 +50,8 @@ int main(int argc, char** argv) {
 }
 
 void menu(slist *list, int length) {
-    int option = 0, trueOrFalse, key;
+    int option = 0, trueOrFalse, key, i;
+    int *DNI;
     snode *result;
 
     printf(STR_MEN_WELCOME);
@@ -96,7 +99,13 @@ void menu(slist *list, int length) {
                 modify_node(result);
                 break;
             case INT_MEN_OPT_PNT: //Print all the elements os the list
-                print_dictionary(list, length);
+
+                DNI = fill_list(list, length);
+                //print_dictionary(list, length);
+                DNI = merge_sort(DNI);
+                for (i = 0; i<sizeof (DNI); i++) {
+                    printf("%d\n", DNI[i]);
+                }
                 break;
             case INT_MEN_OPT_AD2:
                 printf(STR_ADD_CONJ); //Aqui la key quiere decir numero usuarios
