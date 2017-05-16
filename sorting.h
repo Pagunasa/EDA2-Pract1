@@ -11,9 +11,9 @@
 #include "struct.h"
 
 void sort(slist *list,snode *new);
-int* buble(int *a, int length);
+int* buble(int *a, int length);// bubble sort
 snode binary_search(slist *dictionary,int key,int hash);
-int *fill_list(slist *dictionary, int length);
+int *fill_list(slist *dictionary, int length);// omple array amb els DNIs dels nodes 
 
 #endif	/* SORTING_H */
 

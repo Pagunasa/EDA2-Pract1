@@ -42,11 +42,11 @@ void sort(slist *list, snode *new) {
     }
 }
 
-int *fill_list(slist *dictionary, int length) {
+int *fill_list(slist *dictionary, int length) {// omple un array amb les claus 
     int i, pos = 0;
     snode *aux;
-    int *DNI = (int*) malloc(size_dictionary(dictionary, length) * sizeof (int));
-    for (i = 0; i < length; i++) {
+    int *DNI = (int*) malloc(size_dictionary(dictionary, length) * sizeof (int));// crea array
+    for (i = 0; i < length; i++) {// omple array amb les claus dels nodes del diccionari
         aux = dictionary[i].element;
         while (aux != NULL) {
             DNI[pos] = aux->DNI;
@@ -54,10 +54,11 @@ int *fill_list(slist *dictionary, int length) {
             aux = aux->next;
         }
     }
-    return DNI;
+    return DNI;// retorna l'array
 }
 
-int* buble(int *a, int length) {// buble sort
+int* buble(int *a, int length) {// bubble sort
+    // ordena l'array de DNIs del programa anterior 
     int temp;
     for (int i = 0; i < length; i++) {
         for (int j = 0; j < length - 1; j++) {

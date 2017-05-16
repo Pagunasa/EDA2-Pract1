@@ -192,18 +192,18 @@ int size_dictionary(slist *dictionary, int length) {//calcula quanets persones e
 void print_dictionary(slist *dictionary, int length) {// imprimeix tots els nodes i la seva inforació
     int i, a, cont = 0;
     snode *aux;
-    a = size_dictionary(dictionary, length);
+    a = size_dictionary(dictionary, length);// a te el numero de perones que hi ha en el diccionari
 
     if (a == 0) {
         printf(COLOR_RED STR_ERR_EMPTY COLOR_RESET);
     } else {
 
-        for (i = 0; i < length; i++) {
+        for (i = 0; i < length; i++) {// recorre dic[i] , l array 
             aux = dictionary[i].element;
-            while (aux != NULL) {
+            while (aux != NULL) {// recorre les llistes de ncada posició
                 cont++;
                 printf(STR_NODE_NUSER, cont);
-                print_node(aux);
+                print_node(aux);// imprimeix informació del node
                 aux = aux->next;
                 printf(STR_JUMP);
             }
@@ -211,50 +211,50 @@ void print_dictionary(slist *dictionary, int length) {// imprimeix tots els node
     }
 }
 
-int hash(int key, int length) {
+int hash(int key, int length) {// funació que retorna numero clau
     return key % length;
 }
 
-void print_node(snode *node) {
+void print_node(snode *node) {// imprimeix informacio de una persona
     if (node != NULL) {
-        printf(STR_NODE_DNI, node->DNI);
-        printf(STR_NODE_NAM_SUR, node->Info.name, node->Info.surname);
-        printf(STR_NODE_SEX, node->Info.sex);
-        printf(STR_NODE_BIRTHDATE, node->Info.dateBirth.day, node->Info.dateBirth.month, node->Info.dateBirth.year);
+        printf(STR_NODE_DNI, node->DNI);// imprimeix DNI 
+        printf(STR_NODE_NAM_SUR, node->Info.name, node->Info.surname);// imprimeix cognom
+        printf(STR_NODE_SEX, node->Info.sex);// imprimeix sexe 
+        printf(STR_NODE_BIRTHDATE, node->Info.dateBirth.day, node->Info.dateBirth.month, node->Info.dateBirth.year);// imprimeix data naixament
     } else {
         printf(COLOR_RED STR_ERR_NEXTS COLOR_RESET);
     }
 }
 
-slist* add_conjunct(slist *dictionary, int numElem, int length) {
+slist* add_conjunct(slist *dictionary, int numElem, int length) {// afegeix nodes a paritr d'un array de persones
     int i, result;
     slist *aux;
     snode *nodeAux;
 
-    aux = (slist*) malloc(numElem * sizeof (slist));
+    aux = (slist*) malloc(numElem * sizeof (slist));//crea l'array amb inf de persones
     ERRORMEMORY((aux == NULL), (COLOR_RED STR_ERR_MEMORY COLOR_RESET));
 
     for (i == 0; i < numElem; i++) {
         nodeAux = new_node();
-        aux[i].element = nodeAux;
+        aux[i].element = nodeAux;// el punter de la llista es igual a nodeAux
         aux[i].size++;
     }
 
     for (i == 0; i < numElem; i++) {
-        result = add_node(aux[i].element, dictionary, length);
-        if (result == FALSE) {
+        result = add_node(aux[i].element, dictionary, length);//afegeix node al diccionari 
+        if (result == FALSE) {// si no es pot afegir node 
             printf(STR_ERR_ADD, aux[i].element->DNI);
         } else {
             printf(STR_ADD_CRRT, aux[i].element->DNI);
         }
     }
 
-    free(aux);
+    free(aux);// allibera el punter 
 }
 
-void modify_node(snode *node) {
+void modify_node(snode *node) {// modifica un node ja existent 
 
-    if (node != NULL) {
+    if (node != NULL) {// omple informacio del node 
         char name[MAX_LENGTH10];
         char surname[MAX_LENGTH10];
         char sex;
@@ -277,6 +277,7 @@ void modify_node(snode *node) {
 
         printf(STR_MOD_INF3);
         printf(STR_BIRTH_DATE);
+        // escaneja la informacio demanada anteriorment per teclat
         while (!scanf("%d %d %d", &dateBirth.day,
                 &dateBirth.month, &dateBirth.year)
                 || numberOfDigits(dateBirth.day) != LENGTH_2 &&
@@ -290,7 +291,7 @@ void modify_node(snode *node) {
                 dateBirth.year > YEARNUMBER || dateBirth.day > NUMB_DAYS ||
                 dateBirth.month > NUMB_MONTH) dump_line_error(stdin);
         dump_line(stdin);
-
+        // comprova que lo entrar per pantalla és adequat i coherent amb el programa
         if (strcmp(name, STR_NULL) != ZERO) {
             strlcpy(node->Info.name, name, MAX_LENGTH10);
         }
@@ -317,16 +318,16 @@ void modify_node(snode *node) {
 
 }
 
-void print_list_ordered(int *a, int arraylength, slist *dictionary, int length){
-    
+void print_list_ordered(int *a, int arraylength, slist *dictionary, int length){// imprimeix tots els nodes del diccionari de forma ordenada
+    // *a vector amb les claus ordenades de forma ascendent 
     snode *aux;
     for(int i=0; i<arraylength; i++){
-        aux=seek_node(dictionary,a[i], length );
-        print_node(aux);
+        aux=seek_node(dictionary,a[i], length );// busca el node segons la clau
+        print_node(aux);// imprimeix inf node
     }
 }
 
-void clear_all(slist *dictionary, int length) {
+void clear_all(slist *dictionary, int length) {// allibera tots els punters a les llistes de dictionary
     int i;
     snode *aux, *temp;
 

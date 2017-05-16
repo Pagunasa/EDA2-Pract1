@@ -8,7 +8,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-void menu(slist *list, int length);
+void menu(slist *list, int length);// menu per escollir les opcions
 
 #endif /* MAIN_H */
 
